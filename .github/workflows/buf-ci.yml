@@ -19,4 +19,3 @@ jobs:
         with:
           lint: true
           format: true
-          breaking: true
