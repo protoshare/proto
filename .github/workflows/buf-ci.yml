@@ -12,9 +12,11 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: bufbuild/buf-action@v1
-        with:
-          format: true
+      - name: Set up Buf
+        uses: bufbuild/buf-action@v1
+      - name: Lint proto files
+        run: buf lint --error-format github-actions
