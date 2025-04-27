@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package stream.v1;
+
+import "customer/v1/customer.proto";
+import "driver/v1/driver.proto";
+
+option go_package = "github.com/api/gen/go/stream/v1";
+
+service StreamService {
+  rpc StreamEntityUpdates(StreamEntityUpdatesRequest) returns (stream StreamEntityUpdatesResponse);
+}
+
+message Stream {
+  oneof entity {
+    customer.v1.Customer customer = 1;
+    driver.v1.Driver driver = 2;
+  }
+}
+
+// StreamEntityStreamUpdates
+message StreamEntityUpdatesRequest {}
+message StreamEntityUpdatesResponse {
+  Stream stream = 1;
+}

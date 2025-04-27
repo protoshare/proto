@@ -2,9 +2,9 @@ name: Generate and Publish Protobuf Files
 
 on:
   pull_request:
-    paths: ['proto']
+    paths: ['proto/**']
   push:
-    paths: ['proto']
+    paths: ['proto/**']
 
 permissions:
   contents: read
