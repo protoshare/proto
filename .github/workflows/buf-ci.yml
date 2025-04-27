@@ -2,9 +2,7 @@ name: Generate and Publish Protobuf Files
 
 on:
   pull_request:
-    paths: ['proto/**']
   push:
-    paths: ['proto/**']
 
 permissions:
   contents: read
@@ -15,7 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: bufbuild/buf-action@v1
         with:
           lint: true
           format: true
+          generate: true
